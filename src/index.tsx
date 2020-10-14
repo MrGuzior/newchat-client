@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './Components/App/App';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
-import * as serviceWorker from './serviceWorker';
+import * as serviceWorker from './Components/setup/serviceWorker';
+import {SocketService} from './Components/socket/SocketService'
+import {ChatContext} from './Components/socket/ChatContext'
+
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
+      <Provider store={store}>
       <App />
-    </Provider>
-  </React.StrictMode>,
+      </Provider>
+    ,
   document.getElementById('root')
 );
 
