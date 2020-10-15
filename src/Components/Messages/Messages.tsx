@@ -1,5 +1,5 @@
 import React, {useEffect, useContext} from 'react'
-import {Message as MessageType, User} from '../types'
+import {MessageType, UserType} from '../types'
 import Message from './Message'
 import {useSelector} from 'react-redux'
 import {selectMessages} from './messagesSlice'
@@ -10,10 +10,10 @@ const Messages = () => {
     const chatSocket = useContext(ChatContext)
 
     useEffect(()=>{
-        chatSocket.onIncomingIsTyping().subscribe((user:User)=>handleIsTyping(user))
+        chatSocket.onIncomingIsTyping().subscribe((user:UserType)=>handleIsTyping(user))
     },[])
 
-    const handleIsTyping = (user: User) => {
+    const handleIsTyping = (user: UserType) => {
        console.log(user.username)
     }
 

@@ -3,7 +3,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import {updateUsersList} from '../Users/usersSlice'
 import {ChatContext} from '../socket/ChatContext'
-import {User} from '../types'
+import {UserType} from '../types'
 import {
     setUsername,
     setErrorMessage,
@@ -20,7 +20,7 @@ const Landing = () => {
     const errorMessage = useSelector(selectErrorMessage)
     const redirect = useSelector(selectRedirect)
 
-    const handleSignIn = (status:string, users: User[]|null) => {
+    const handleSignIn = (status:string, users: UserType[]|null) => {
         switch(status){ 
             case '200':
                 dispatch(updateUsersList(users))

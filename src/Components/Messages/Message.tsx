@@ -1,17 +1,17 @@
 import React from 'react'
-import {Message as MessageType} from '../types'
+import {MessageType} from '../types'
 
 interface MessageProps {
     message: MessageType
 }
 
 const Message = ({message}:MessageProps) => {
-    const hours = new Date(message.timeStamp).getHours();
-    const minutes = new Date(message.timeStamp).getMinutes();
-    const seconds = new Date(message.timeStamp).getSeconds();
+    const hours = new Date(message.timeStamp).getHours().toString()
+    const minutes = new Date(message.timeStamp).getMinutes().toString()
+    const seconds = new Date(message.timeStamp).getSeconds().toString()
     return(
         <div>
-            <p>{hours}:{minutes}:{seconds} | {message.message} | {message.username}</p>
+            <p>{hours}:{minutes.length === 1 ? `0${minutes}` : minutes}:{seconds.length === 1 ? `0${seconds}` : seconds} | {message.message} | {message.username}</p>
         </div>
     )
 }

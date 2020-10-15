@@ -1,9 +1,9 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {AppThunk, RootState} from '../../app/store'
-import {Message} from '../types'
+import {MessageType} from '../types'
 
 interface MessagesState {
-   messages: Message[];
+   messages: MessageType[];
 }
 
 const initialState: MessagesState = {

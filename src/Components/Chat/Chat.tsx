@@ -5,7 +5,7 @@ import Messages from '../Messages/Messages'
 import Users from '../Users/Users'
 import {addMessage} from '../Messages/messagesSlice'
 import {ChatContext} from '../socket/ChatContext'
-import {Message as MessageType} from '../types'
+import {MessageType} from '../types'
 import {selectUsername} from '../Landing/landingSlice'
 import {setMessage, clearMessage, selectMessage} from './chatSlice'
 

@@ -1,5 +1,5 @@
 import io from 'socket.io-client';
-import {Message, User} from '../types'
+import {MessageType, UserType} from '../types'
 import { fromEvent, Observable } from 'rxjs';
 
 export class SocketService {
@@ -11,21 +11,21 @@ export class SocketService {
         return this
     }
 
-    public sendMessage(message: Message): void {
+    public sendMessage(message: MessageType): void {
         this.socket.emit('message', message)
         
     }
 
-    public onIncomingMessage(): Observable<Message> {
+    public onIncomingMessage(): Observable<MessageType> {
         
         return fromEvent(this.socket, 'message')
     }
 
-    public signIn(user: User, callback: (s:string, u:User[]|null)=>void): void {
+    public signIn(user: UserType, callback: (s:string, u:UserType[]|null)=>void): void {
         this.socket.emit('signIn', user, callback)
     }
 
-    public onIncomingSignIn(): Observable<User>{
+    public onIncomingSignIn(): Observable<UserType>{
         
         return fromEvent(this.socket, 'signIn')
     }
@@ -35,7 +35,7 @@ export class SocketService {
         this.socket.disconnect()
     }
 
-    public onIncomingDisconnectUser(): Observable<User>{
+    public onIncomingDisconnectUser(): Observable<UserType>{
         
         return fromEvent(this.socket, 'disconnect')
     }
@@ -44,7 +44,7 @@ export class SocketService {
         return fromEvent(this.socket, 'test')
     }
 
-    public onIncomingUsers(): Observable<User[]>{
+    public onIncomingUsers(): Observable<UserType[]>{
         console.log('users coming')
         return fromEvent(this.socket, 'userList')
     }
@@ -62,7 +62,7 @@ export class SocketService {
         this.socket.emit('typing')
     }
 
-    public onIncomingIsTyping(): Observable<User>{
+    public onIncomingIsTyping(): Observable<UserType>{
         return fromEvent(this.socket, 'isTyping')
     }
 }
