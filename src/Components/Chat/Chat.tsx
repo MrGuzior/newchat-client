@@ -8,6 +8,7 @@ import {ChatContext} from '../socket/ChatContext'
 import {MessageType} from '../types'
 import {selectUsername} from '../Landing/landingSlice'
 import {setMessage, clearMessage, selectMessage} from './chatSlice'
+import './Chat.css'
 
 const Chat = () => {
     const dispatch = useDispatch()

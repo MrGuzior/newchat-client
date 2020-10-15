@@ -4,6 +4,7 @@ import Message from './Message'
 import {useSelector} from 'react-redux'
 import {selectMessages} from './messagesSlice'
 import {ChatContext} from '../socket/ChatContext'
+import './Messages.css'
 
 const Messages = () => {
     const messages = useSelector(selectMessages)
