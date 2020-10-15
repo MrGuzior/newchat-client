@@ -1,7 +1,6 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
 import messagesReducer from '../Components/Messages/messagesSlice'
-//import usersReducer from '../Components/Landing/loginSlice'
 import landingReducer from '../Components/Landing/landingSlice'
 import chatReducer from '../Components/Chat/chatSlice'
 import usersReducer from '../Components/Users/usersSlice'
