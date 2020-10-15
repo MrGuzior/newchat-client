@@ -1,20 +1,23 @@
 import React, {useState, useEffect, useContext} from 'react'
 import { Redirect } from 'react-router-dom';
-import Message from '../Message/Message'
+import Messages from '../Messages/Messages'
 import OnlineList from '../OnlineList/OnlineList'
+import Users from '../Users/Users'
 import {useSelector, useDispatch} from 'react-redux'
-import {addMessage} from '../Message/messagesSlice'
+import {addMessage} from '../Messages/messagesSlice'
 import {ChatContext} from '../socket/ChatContext'
-import {Message as MessageType, User} from '../types/types'
+import {Message as MessageType, User} from '../types'
 import queryString from 'query-string'
-import { selectUsers, selectUsername} from '../Landing/loginSlice'
+import {setUsername, selectUsername} from '../Landing/landingSlice'
+import {setMessage, clearMessage, selectMessage} from './chatSlice'
 
 const Chat = () => {
     const dispatch = useDispatch()
     const chatSocket = useContext(ChatContext)
     let idleTimeout:ReturnType<typeof setTimeout>
 
-    const [message, setMessage] = useState('')
+    //const [message, setMessage] = useState('')
+    const message = useSelector(selectMessage)
 
     const username = useSelector(selectUsername)
 
@@ -37,7 +40,7 @@ const Chat = () => {
  
     const handleSubmit = (event:React.FormEvent):void => {
         event.preventDefault()
-        setMessage('')
+        dispatch(clearMessage())
         chatSocket.sendMessage({
             id: Date.now(),
             username: username,
@@ -53,19 +56,20 @@ const Chat = () => {
     }
 
     const handleMessageInput = (e:React.ChangeEvent<HTMLInputElement>):void=>{
-        setMessage(e.target.value)
+        //setMessage(e.target.value)
+        dispatch(setMessage(e.target.value))
         chatSocket.userTyping()
     }
 
     return(
         <div className='Chat'>
             <div className='onlineList'>
-                <OnlineList/>
+                <Users/>
             </div>
             <div className='messages'>
-                <Message/>
+                <Messages/>
             </div>
-            <form onSubmit={(e)=>handleSubmit(e)}>
+            <form onSubmit={(e)=>handleSubmit(e)} autoComplete='off'>
                 <input type="text" name="compose" id="compose" value={message} onChange={(e)=>handleMessageInput(e)}/>
                 <button type='submit'>Send</button>
             </form>

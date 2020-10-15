@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {AppThunk, RootState} from '../../app/store'
-import {User} from '../types/types'
+import {User} from '../types'
 
 interface UsersState {
     users: User[],

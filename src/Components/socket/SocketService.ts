@@ -1,5 +1,5 @@
 import io from 'socket.io-client';
-import {Message, User} from '../types/types'
+import {Message, User} from '../types'
 import { fromEvent, Observable } from 'rxjs';
 
 export class SocketService {
@@ -60,5 +60,9 @@ export class SocketService {
 
     public userTyping(): void{
         this.socket.emit('typing')
+    }
+
+    public onIncomingIsTyping(): Observable<User>{
+        return fromEvent(this.socket, 'isTyping')
     }
 }

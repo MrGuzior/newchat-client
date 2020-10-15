@@ -1,23 +1,30 @@
 import React, { useState, useContext } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { Redirect } from 'react-router-dom';
-import {addUser, setUser, updateUserList} from './loginSlice'
+import {updateUsersList} from '../Users/usersSlice'
 import {ChatContext} from '../socket/ChatContext'
-import {User} from '../types/types'
+import {User} from '../types'
+import {setUsername, selectUsername} from './landingSlice'
 
 const Landing = () => {
     const dispatch = useDispatch()
     const chatSocket = useContext(ChatContext)
 
-    const [username, setUsername] = useState('')
+    //const [username, setUsername] = useState('')
+    const username = useSelector(selectUsername)
+
+
     const [errorMessage, setErrorMessage] = useState('')
     const [redirect, setRedirect] = useState(false)
 
     const handleSignIn = (status:string, users: User[]|null) => {
         switch(status){ 
             case '200':
-                dispatch(setUser(username))
-                dispatch(updateUserList(users))
+                //dispatch(setUser(username))
+
+                dispatch(updateUsersList(users))
+
+
                 setRedirect(true)
                 break;
             case '409':
@@ -29,15 +36,15 @@ const Landing = () => {
         }
     }
 
-    const handleSubmit = (event: React.FormEvent):void => {
-        event.preventDefault()
+    const handleSubmit = (e: React.FormEvent):void => {
+        e.preventDefault()
         chatSocket.signIn({
             username,
         }, handleSignIn)
     }
 
-    const testing = (e: React.MouseEvent) => {
-        e.preventDefault()
+    const handleUsernameInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
+        dispatch(setUsername(e.target.value))
     }
 
     return(
@@ -45,10 +52,9 @@ const Landing = () => {
             {redirect ? <Redirect to={`/chat`} /> : null}
             <p>{errorMessage}</p>
             <form onSubmit={(e)=>handleSubmit(e)}>
-                <input type="text" value={username} onChange={(e)=>setUsername(e.target.value)}/>
+                <input type="text" value={username} onChange={(e)=>handleUsernameInput(e)}/>
                 <button type='submit'>Join chat</button>
             </form>
-            <button onClick={(e)=>testing(e)}>TEST</button>
         </div>
     )
 }

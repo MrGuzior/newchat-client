@@ -1,24 +1,22 @@
-import React,{useEffect, useContext} from 'react'
+import React, {useEffect, useContext} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {ChatContext} from '../socket/ChatContext'
-import {User} from '../types'
+import {User as UserType} from '../types' 
 import {updateUsersList, selectUsers} from '../Users/usersSlice'
 
-const OnlineList = () => {
+const Users = () => {
     const dispatch = useDispatch()
     const chatSocket = useContext(ChatContext)
     const usersList = useSelector(selectUsers)
 
     useEffect(()=>{
-        chatSocket.onIncomingUsers().subscribe((users:User[])=>{handleIncomingUsers(users)}) 
+        chatSocket.onIncomingUsers().subscribe((users:UserType[])=>{handleIncomingUsers(users)}) 
         
     },[])
-    
-    const handleIncomingUsers = (users: User[]) => {
+
+    const handleIncomingUsers = (users: UserType[]) => {
         if(users)dispatch(updateUsersList(users))
     }
-
-
 
     return (<div>
         {usersList.map((user,index)=>{
@@ -29,4 +27,4 @@ const OnlineList = () => {
     </div>)
 }
 
-export default OnlineList
+export default Users
