@@ -1,38 +1,37 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import {updateUsersList} from '../Users/usersSlice'
 import {ChatContext} from '../socket/ChatContext'
 import {User} from '../types'
-import {setUsername, selectUsername} from './landingSlice'
+import {
+    setUsername,
+    setErrorMessage,
+    setRedirect, 
+    selectUsername,
+    selectErrorMessage,
+    selectRedirect
+} from './landingSlice'
 
 const Landing = () => {
     const dispatch = useDispatch()
     const chatSocket = useContext(ChatContext)
-
-    //const [username, setUsername] = useState('')
     const username = useSelector(selectUsername)
-
-
-    const [errorMessage, setErrorMessage] = useState('')
-    const [redirect, setRedirect] = useState(false)
+    const errorMessage = useSelector(selectErrorMessage)
+    const redirect = useSelector(selectRedirect)
 
     const handleSignIn = (status:string, users: User[]|null) => {
         switch(status){ 
             case '200':
-                //dispatch(setUser(username))
-
                 dispatch(updateUsersList(users))
-
-
-                setRedirect(true)
+                dispatch(setRedirect(true))
                 break;
             case '409':
-                setErrorMessage('Username taken')
+                dispatch(setErrorMessage('Username taken'))
                 break;
             default:
                 console.log('whwopsi')
-                setErrorMessage('Ooops, something went wrong.')
+                dispatch(setErrorMessage('Ooops, something went wrong.'))
         }
     }
 

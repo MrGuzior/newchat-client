@@ -6,7 +6,6 @@ interface MessageProps {
 }
 
 const Message = ({message}:MessageProps) => {
-    //const {message} = props
     const hours = new Date(message.timeStamp).getHours();
     const minutes = new Date(message.timeStamp).getMinutes();
     const seconds = new Date(message.timeStamp).getSeconds();

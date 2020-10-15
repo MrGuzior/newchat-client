@@ -8,14 +8,12 @@ import {ChatContext} from '../socket/ChatContext'
 const Messages = () => {
     const messages = useSelector(selectMessages)
     const chatSocket = useContext(ChatContext)
-    let typingUsers:any;
 
     useEffect(()=>{
         chatSocket.onIncomingIsTyping().subscribe((user:User)=>handleIsTyping(user))
     },[])
 
     const handleIsTyping = (user: User) => {
-       typingUsers = user.username
        console.log(user.username)
     }
 

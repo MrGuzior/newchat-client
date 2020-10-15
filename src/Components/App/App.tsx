@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,7 +7,6 @@ import {
 import Chat from '../Chat/Chat'
 import Landing from '../Landing/Landing'
 import {ChatContext} from '../socket/ChatContext'
-import { Observable, fromEvent } from 'rxjs'
 import {SocketService} from '../socket/SocketService'
 import './App.css';
 
@@ -15,11 +14,11 @@ function App() {
   const chat = new SocketService()
   chat.init()
   
-
   return (
     <Router>
       <ChatContext.Provider value={chat}>
           <Switch>
+            
             <Route exact path='/'>
               <Landing />
             </Route>
@@ -27,10 +26,10 @@ function App() {
             <Route exact path='/chat'>
               <Chat />
             </Route>
+
           </Switch>
       </ChatContext.Provider>
-
-        </Router>
+    </Router>
   );
 }
 
