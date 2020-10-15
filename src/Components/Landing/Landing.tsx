@@ -1,10 +1,13 @@
 import React from 'react'
 import Login from './Login'
+import Background from './Background/Background'
 import './Landing.css'
 
 const Landing = () => {
     return (
-        <Login/>
+        <div>
+            <Background/>
+        </div>
     )
 }
 

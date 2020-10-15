@@ -8,6 +8,7 @@ import {ChatContext} from '../../context/ChatContext'
 import {MessageType} from '../../types'
 import {selectUsername} from '../Landing/landingSlice'
 import {setMessage, clearMessage, selectMessage} from './chatSlice'
+import {idleDisconnectMilliseconds} from '../../config'
 import './Chat.css'
 
 const Chat = () => {
@@ -29,7 +30,7 @@ const Chat = () => {
             idleTimeout = setTimeout(()=>{
                 chatSocket.idleTimeout()
                 window.location.href = '/'
-            },60000)
+            },idleDisconnectMilliseconds)
     }
 
     const listenToUserActivity = () => 'mousemove keypress click wheel'.split(" ").forEach((e)=>window.addEventListener(e,handleIdleTimeout))
