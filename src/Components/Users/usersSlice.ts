@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
-import {RootState} from '../../app/store'
-import {UserType} from '../types'
+import {RootState} from '../../store'
+import {UserType} from '../../types'
 
 interface UsersState {
     users: UserType[]

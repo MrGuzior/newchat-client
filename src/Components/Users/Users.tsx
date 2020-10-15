@@ -1,7 +1,7 @@
 import React, {useEffect, useContext} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import {ChatContext} from '../socket/ChatContext'
-import {UserType} from '../types' 
+import {ChatContext} from '../../context/ChatContext'
+import {UserType} from '../../types' 
 import {updateUsersList, selectUsers} from '../Users/usersSlice'
 import './Users.css'
 

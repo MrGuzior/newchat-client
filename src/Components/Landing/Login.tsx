@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import {updateUsersList} from '../Users/usersSlice'
-import {ChatContext} from '../socket/ChatContext'
-import {UserType} from '../types'
+import {ChatContext} from '../../context/ChatContext'
+import {UserType} from '../../types'
 import {
     setUsername,
     setErrorMessage,

@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './Components/App/App';
-import { store } from './app/store';
+import { store } from './store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './Components/setup/serviceWorker';
-import {SocketService} from './Components/socket/SocketService'
-import {ChatContext} from './Components/socket/ChatContext'
+import {SocketService} from './service/SocketService'
+import {ChatContext} from './context/ChatContext'
 
 
 

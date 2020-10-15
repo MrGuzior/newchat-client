@@ -6,8 +6,8 @@ import {
 } from "react-router-dom";
 import Chat from '../Chat/Chat'
 import Landing from '../Landing/Landing'
-import {ChatContext} from '../socket/ChatContext'
-import {SocketService} from '../socket/SocketService'
+import {ChatContext} from '../../context/ChatContext'
+import {SocketService} from '../../service/SocketService'
 import './App.css';
 
 function App() {

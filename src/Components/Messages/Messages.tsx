@@ -1,9 +1,9 @@
 import React, {useEffect, useContext} from 'react'
-import {MessageType, UserType} from '../types'
+import {MessageType, UserType} from '../../types'
 import Message from './Message'
 import {useSelector} from 'react-redux'
 import {selectMessages} from './messagesSlice'
-import {ChatContext} from '../socket/ChatContext'
+import {ChatContext} from '../../context/ChatContext'
 import './Messages.css'
 
 const Messages = () => {
