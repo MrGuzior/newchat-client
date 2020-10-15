@@ -11,7 +11,11 @@ const Message = ({message}:MessageProps) => {
     const seconds = new Date(message.timeStamp).getSeconds().toString()
     return(
         <div>
-            <p>{hours}:{minutes.length === 1 ? `0${minutes}` : minutes}:{seconds.length === 1 ? `0${seconds}` : seconds} | {message.message} | {message.username}</p>
+            <p>{hours.length === 1 ? `0${hours}` : hours
+            }:{minutes.length === 1 ? `0${minutes}` : minutes
+            }:{seconds.length === 1 ? `0${seconds}` : seconds
+            } | {message.message} | {message.username}
+            </p>
         </div>
     )
 }
