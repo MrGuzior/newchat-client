@@ -1,5 +1,21 @@
 .message{
-    background-color: lightblue;
-    width:200px;
-    height: 70px;
+    background-color: lightgray;
+    width:350px;
+    height: 140px;
+    filter: blur(20px)
 }
+
+.float-right{
+    float: right;
+    background-color: lightblue;
+}
+
+.hide{
+    visibility: hidden;
+}
+
+.mock-message{
+    color:white;
+}
+
+

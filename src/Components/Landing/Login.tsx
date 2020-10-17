@@ -12,6 +12,7 @@ import {
     selectErrorMessage,
     selectRedirect
 } from './landingSlice'
+import {motion} from 'framer-motion'
 import './Login.css'
 
 const Login = () => {
@@ -48,14 +49,22 @@ const Login = () => {
     }
 
     return(
-        <div className='Landing'>
+        <motion.div 
+            className='login'
+            animate={{y:window.innerHeight/2-50}}
+            initial={{y:'110vh'}}
+            transition={{
+                duration:1,
+                type:'spring'
+            }}
+            >
             {redirect ? <Redirect to={`/chat`} /> : null}
             <p>{errorMessage}</p>
             <form onSubmit={(e)=>handleSubmit(e)}>
                 <input type="text" value={username} onChange={(e)=>handleUsernameInput(e)}/>
                 <button type='submit'>Join chat</button>
             </form>
-        </div>
+        </motion.div>
     )
 }
 
