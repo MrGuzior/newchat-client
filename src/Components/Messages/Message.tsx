@@ -20,10 +20,14 @@ const Message = ({message}:MessageProps) => {
             ${message.username === 'Server' && 'server-message'}
             `
         }>
-            <p>{hours.length === 1 ? `0${hours}` : hours
+            <p className='message-username'>{message.username}</p>
+            <p className='message-message'>{message.message}</p>
+            <p className='message-time'>
+            {
+                hours.length === 1 ? `0${hours}` : hours
             }:{minutes.length === 1 ? `0${minutes}` : minutes
             }:{seconds.length === 1 ? `0${seconds}` : seconds
-            } | {message.message} | {message.username}
+            } 
             </p>
         </div>
     )
