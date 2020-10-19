@@ -1,0 +1,22 @@
+.message{
+    padding: 1%;
+    margin: 5px;
+    width: fit-content;
+    height: fit-content;
+    max-width: 33%;
+}
+
+.sent-message{
+    border-radius: 3px 20px 20px 20px;
+    background-color: lightgrey;
+}
+
+.recieved-message{
+    margin-left: auto;
+    border-radius: 20px 3px 20px 20px;
+    background-color: lightblue;
+}
+
+.server-message{
+    background-color: lightgreen;
+}

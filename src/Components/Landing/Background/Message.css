@@ -1,4 +1,4 @@
-.message{
+.background-message{
     background-color: lightgray;
     width:350px;
     height: 140px;
@@ -14,7 +14,7 @@
     visibility: hidden;
 }
 
-.mock-message{
+.background-message{
     color:white;
 }
 

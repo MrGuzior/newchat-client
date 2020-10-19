@@ -10,7 +10,7 @@ const Message = ({floatRight, hide}:MessageProps) => {
     document.body.style.overflow = "hidden"
 
     return (
-        <div className={`message ${floatRight && 'float-right'} ${hide && 'hide'}`}>
+        <div className={`background-messages ${floatRight && 'float-right'} ${hide && 'hide'}`}>
            <h2>Mock message  </h2>
            </div>
     )

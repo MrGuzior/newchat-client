@@ -4,17 +4,17 @@ import './Background.css'
 const Messages = () => {
     return (
         <div>
-            <div className='message right'><p>Mock text</p></div>
-            <div className='message left hidden'><p>Mock text</p></div>
-            <div className='message left'><p>Mock text</p></div>
-            <div className='message right'><p>Mock text</p></div>
-            <div className='message left hidden'><p>Mock text</p></div>
-            <div className='message right'><p>Mock text</p></div>
-            <div className='message left hidden'><p>Mock text</p></div>
-            <div className='message left'><p>Mock text</p></div>
-            <div className='message right'><p>Mock text</p></div>
-            <div className='message left hidden'><p>Mock text</p></div>
-            <div className='message left'><p>Mock text</p></div>
+            <div className='background-message right'><p>Mock text</p></div>
+            <div className='background-message left hidden'><p>Mock text</p></div>
+            <div className='background-message left'><p>Mock text</p></div>
+            <div className='background-message right'><p>Mock text</p></div>
+            <div className='background-message left hidden'><p>Mock text</p></div>
+            <div className='background-message right'><p>Mock text</p></div>
+            <div className='background-message left hidden'><p>Mock text</p></div>
+            <div className='background-message left'><p>Mock text</p></div>
+            <div className='background-message right'><p>Mock text</p></div>
+            <div className='background-message left hidden'><p>Mock text</p></div>
+            <div className='background-message left'><p>Mock text</p></div>
         </div>
     )
 }

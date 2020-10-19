@@ -12,7 +12,6 @@ const Users = () => {
 
     useEffect(()=>{
         chatSocket.onIncomingUsers().subscribe((users:UserType[])=>{handleIncomingUsers(users)}) 
-        
     },[])
 
     const handleIncomingUsers = (users: UserType[]) => {
