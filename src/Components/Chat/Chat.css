@@ -1,0 +1,27 @@
+.Chat {
+    height: 100%;
+    position: relative;
+}
+
+.online-list{
+    z-index: 100;
+    float: right;
+}
+
+.send-button{
+    width:19%;
+}
+
+.messages{
+    height: 93vh;
+}
+
+.message-input{
+    width:80%;
+}
+
+.message-form{
+    min-width: 100%;
+    position: fixed;
+    bottom: 1px;
+}

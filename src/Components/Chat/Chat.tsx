@@ -1,4 +1,4 @@
-import React, {useEffect, useContext} from 'react'
+import React, {useEffect, useContext, useRef} from 'react'
 import { Redirect } from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux'
 import Messages from '../Messages/Messages'
@@ -14,16 +14,22 @@ import './Chat.css'
 const Chat = () => {
     const dispatch = useDispatch()
     const chatSocket = useContext(ChatContext)
+    
     const message = useSelector(selectMessage)
     const username = useSelector(selectUsername)
     let idleTimeout:ReturnType<typeof setTimeout>
 
     useEffect(()=>{
-        chatSocket.onIncomingMessage().subscribe((message:MessageType)=>{dispatch(addMessage(message))})
+        chatSocket.onIncomingMessage().subscribe((message:MessageType)=>{handleIncomingMessage(message)})
         listenToUserActivity()
         handleIdleTimeout()
         return ()=>{chatSocket.disconnectUser()}
     },[])
+
+
+    const handleIncomingMessage = (message: MessageType) => {        
+        dispatch(addMessage(message))
+    }
 
     const handleIdleTimeout = (): void => {
         clearTimeout(idleTimeout)
@@ -53,17 +59,17 @@ const Chat = () => {
 
     return(
         <div className='Chat'>
-            <div className='onlineList'>
+            <button onClick={()=>window.location.href='/'}>Disconnect</button>
+            <div className='online-list'>
                 <Users/>
             </div>
-            <div className='messages'>
-                <Messages/>
+            <div className='messages' id='messages'>
+                    <Messages />
             </div>
-            <form onSubmit={(e)=>handleSubmit(e)} autoComplete='off'>
-                <input type="text" name="compose" id="compose" value={message} onChange={(e)=>handleMessageInput(e)}/>
-                <button type='submit'>Send</button>
+            <form onSubmit={(e)=>handleSubmit(e)} autoComplete='off' className='message-form'>
+                <input type="text" name="compose" id="compose" value={message} onChange={(e)=>handleMessageInput(e)} className='message-input'/>
+                <button type='submit' className='send-button'>Send</button>
             </form>
-            <button onClick={()=>window.location.href='/'}>Disconnect</button>
             {username ? null :<Redirect to='/'/>}
         </div>
     )
