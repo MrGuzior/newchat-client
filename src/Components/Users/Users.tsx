@@ -18,10 +18,10 @@ const Users = () => {
         if(users)dispatch(updateUsersList(users))
     }
 
-    return (<div>
+    return (<div className='users-list'>
         {usersList.map((user,index)=>{
             if(user.connected){
-                return(<li key={index}>{user.username}</li>)
+                return(<li className='online-user-li' key={index}>{user.username}</li>)
             }
         })}
     </div>)

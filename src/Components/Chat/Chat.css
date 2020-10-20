@@ -4,23 +4,29 @@
 }
 
 .online-list{
+    padding: 1%;
     z-index: 100;
     float: right;
+    min-width: 15%;
 }
 
 .send-button{
+    height: 100%;
     width:19%;
 }
 
 .messages{
-    height: 93vh;
+    height: 85vh;
+    border-right: 1px solid black;
 }
 
 .message-input{
+    height: 100%;
     width:80%;
 }
 
 .message-form{
+    height: 10vh;
     min-width: 100%;
     position: fixed;
     bottom: 1px;

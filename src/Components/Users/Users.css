@@ -1,0 +1,7 @@
+.online-user-li{
+    padding: 3px;
+    margin-top: 2px;
+    list-style: none;
+    background-color: lightyellow;
+    border-radius: 7px;
+}
