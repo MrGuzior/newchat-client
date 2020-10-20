@@ -20,7 +20,7 @@ const Message = ({message}:MessageProps) => {
             ${message.username === 'Server' && 'server-message'}
             `
         }>
-            <p className='message-username'>{message.username}</p>
+            {message.username !== username && <p className='message-username'>{message.username}</p>}
             <p className='message-message'>{message.message}</p>
             <p className='message-time'>
             {
