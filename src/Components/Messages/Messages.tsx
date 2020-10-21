@@ -1,38 +1,58 @@
-import React, {useEffect, useContext, useRef} from 'react'
+import React, {useEffect, useContext, useRef, useState} from 'react'
 import {MessageType, UserType} from '../../types'
 import Message from './Message'
-import {useSelector} from 'react-redux'
+import {useSelector, useDispatch} from 'react-redux'
 import {selectMessages} from './messagesSlice'
 import {ChatContext} from '../../context/ChatContext'
+import {selectUsers} from '../Users/usersSlice'
 import './Messages.css'
 
 const Messages = () => {
     const messages = useSelector(selectMessages)
     const chatSocket = useContext(ChatContext)
+    const users = useSelector(selectUsers)
     const bottomScrollRef = useRef<HTMLDivElement>(null)
 
     useEffect(()=>{
-        chatSocket.onIncomingIsTyping().subscribe((user:UserType)=>handleIsTyping(user))
+        chatSocket.onIncomingIsTyping().subscribe((user:UserType)=>{
+            handleTypingUser(user)
+        })
     },[])
+
+    useEffect(()=>{
+        console.log('new users')
+    }, [users])
     
     useEffect(()=>{
         scrollToBottom()
     },[messages])
-
+    
     const scrollToBottom = () => bottomScrollRef.current && bottomScrollRef.current.scrollIntoView({behavior: 'smooth'})
-
-    const handleIsTyping = (user: UserType) => {
-       console.log(user.username)
+    
+    const handleTypingUser = (user: UserType) => {
     }
 
     return (
-            
         <div className='messages' >
         {messages.map((message:MessageType, index:number) => {
             return(
                 <Message key={index} message={message}/>
             )
-        })}
+        })}{
+            users.map((user:UserType, index:number)=>{
+                if(user.isTyping){
+                return(
+                    <Message key={index} message={{
+                        id: index,
+                        username: 'typing',
+                        message: `${user.username} is typing...`,
+                        timeStamp: Date.now(),
+                    }}/>
+                )
+                }
+            })
+        }
+
         <div ref={bottomScrollRef}></div>
     </div>
             

@@ -14,13 +14,13 @@ const Message = ({message}:MessageProps) => {
     return(
         <div className={
             `message 
-            ${message.username === username? 'sent-message' : 'recieved-message'}
-            ${message.username === 'Server' && 'server-message'}
+            ${message.username === username  ? 'sent-message' : 'recieved-message'}
+            ${message.username === 'Server' || message.username !== 'typing' && 'server-message'}
             `
         }>
-            {message.username !== username && <p className='message-username'>{message.username}</p>}
+            {message.username !== username || message.username !== 'typing' && <p className='message-username'>{message.username}</p>}
             <p className='message-message'>{message.message}</p>
-            <p className='message-time'>{moment(message.timeStamp).format('LTS')}</p>
+            {message.username !== 'typing' &&  <p className='message-time'>{moment(message.timeStamp).format('LTS')}</p>}
         </div>
     )
 }

@@ -7,5 +7,6 @@ export interface MessageType {
 
 export interface UserType {
     username: string,
-    connected?: boolean
+    connected?: boolean,
+    isTyping?: boolean
 }
