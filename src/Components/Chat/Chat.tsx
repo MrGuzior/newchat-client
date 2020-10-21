@@ -9,6 +9,8 @@ import {MessageType} from '../../types'
 import {selectUsername} from '../Landing/landingSlice'
 import {setMessage, clearMessage, selectMessage} from './chatSlice'
 import {idleDisconnectMilliseconds} from '../../config'
+import Button from 'react-bootstrap/Button'
+import FormControl from 'react-bootstrap/FormControl'
 import './Chat.css'
 
 const Chat = () => {
@@ -59,18 +61,21 @@ const Chat = () => {
 
     return(
         <div className='Chat'>
-            <button onClick={()=>window.location.href='/'}>Disconnect</button>
-            <div className='online-list'>
-                <Users/>
-            </div>
-            <div className='messages' id='messages'>
-                    <Messages />
+            <div className='content-container'>
+                <div className='messages' id='messages'>
+                        <Messages />
+                </div>
+                <div className='online-list'>
+                    <Button onClick={()=>window.location.href='/'} className='disconnect-button' variant="outline-danger">Disconnect</Button>
+                    
+                    <Users/>
+                </div>
             </div>
             <form onSubmit={(e)=>handleSubmit(e)} autoComplete='off' className='message-form'>
-                <input type="text" name="compose" id="compose" value={message} onChange={(e)=>handleMessageInput(e)} className='message-input'/>
-                <button type='submit' className='send-button'>Send</button>
+                <input placeholder='Write your message...' type="text" name="compose" id="compose" value={message} onChange={(e)=>handleMessageInput(e)} className='message-input' autoFocus/>
+                <Button type='submit' className='send-button' variant="outline-primary">Send</Button>
             </form>
-            {username ? null :<Redirect to='/'/>}
+            {username ? null :window.location.href='/'}
         </div>
     )
 }

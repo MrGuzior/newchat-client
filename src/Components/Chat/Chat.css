@@ -5,29 +5,44 @@
 
 .online-list{
     padding: 1%;
-    z-index: 100;
     float: right;
-    min-width: 15%;
+    border-left: 1px solid lightgray;
 }
 
-.send-button{
-    height: 100%;
-    width:19%;
+.content-container{
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    grid-template-rows: 85vh;
 }
 
 .messages{
-    height: 85vh;
-    border-right: 1px solid black;
-}
-
-.message-input{
-    height: 100%;
-    width:80%;
 }
 
 .message-form{
     height: 10vh;
-    min-width: 100%;
+    width: 100%;
     position: fixed;
     bottom: 1px;
+    margin:2px 2px 15px 2px;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+}
+
+.send-button{
+    margin:0;
+    height: 100%;
+    box-sizing: border-box;
+    display: inline-block;
+
+}
+
+.disconnect-button{
+    float:right;
+}
+
+.message-input{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    color: #525252;
 }

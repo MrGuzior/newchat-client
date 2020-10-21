@@ -19,6 +19,7 @@ const Users = () => {
     }
 
     return (<div className='users-list'>
+        <h3>Online</h3>
         {usersList.map((user,index)=>{
             if(user.connected){
                 return(<li className='online-user-li' key={index}>{user.username}</li>)

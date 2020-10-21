@@ -13,6 +13,9 @@ import {
     selectRedirect
 } from './landingSlice'
 import {motion} from 'framer-motion'
+import InputGroup from 'react-bootstrap/InputGroup'
+import FormControl, { FormControlProps } from 'react-bootstrap/FormControl'
+import Button from 'react-bootstrap/Button'
 import './Login.css'
 
 const Login = () => {
@@ -44,7 +47,7 @@ const Login = () => {
         }, handleSignIn)
     }
 
-    const handleUsernameInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const handleUsernameInput = (e: any): void => {
         dispatch(setUsername(e.target.value))
     }
 
@@ -61,8 +64,26 @@ const Login = () => {
             {redirect ? <Redirect to={`/chat`} /> : null}
             <p>{errorMessage}</p>
             <form onSubmit={(e)=>handleSubmit(e)}>
-                <input type="text" value={username} onChange={(e)=>handleUsernameInput(e)}/>
-                <button type='submit'>Join chat</button>
+                
+
+            <InputGroup className="mb-3">
+                <FormControl
+                    placeholder="Username"
+                    aria-label="Username"
+                    aria-describedby="basic-addon2"
+                    value={username}
+                    onChange={(e)=>handleUsernameInput(e)}
+                    autoFocus
+                />
+                <InputGroup.Append>
+                    <Button 
+                        variant="outline-secondary"
+                        type='submit'
+                    >Button</Button>
+                </InputGroup.Append>
+            </InputGroup>
+
+
             </form>
         </motion.div>
     )
