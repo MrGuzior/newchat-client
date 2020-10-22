@@ -2,6 +2,7 @@
     padding: 3px;
     margin-top: 2px;
     list-style: none;
-    background-color: rgb(163, 255, 176);
+    background-color: rgb(215, 255, 221);
     border-radius: 7px;
+    box-shadow: 1px 2px 5px lightgray;
 }
