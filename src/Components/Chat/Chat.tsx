@@ -60,20 +60,40 @@ const Chat = () => {
     }
 
     return(
-        <div className='Chat'>
+        <div className='Chat' data-testid='chat'>
             <div className='content-container'>
-                <div className='messages' id='messages'>
+                <div className='messages' id='messages' data-testid='messages'>
                         <Messages />
                 </div>
                 <div className='online-list'>
-                    <Button onClick={()=>window.location.href='/'} className='disconnect-button' variant="outline-danger">Disconnect</Button>
+                    <Button 
+                        onClick={()=>window.location.href='/'} 
+                        className='disconnect-button' 
+                        variant="outline-danger"
+                        data-testid='disconnect-button'
+                    >Disconnect</Button>
                     
                     <Users/>
                 </div>
             </div>
             <form onSubmit={(e)=>handleSubmit(e)} autoComplete='off' className='message-form'>
-                <input placeholder='Write your message...' type="text" name="compose" id="compose" value={message} onChange={(e)=>handleMessageInput(e)} className='message-input' autoFocus/>
-                <Button type='submit' className='send-button' variant="outline-primary">Send</Button>
+                <input 
+                    placeholder='Write your message...' 
+                    type="text" 
+                    name="compose" 
+                    id="compose" 
+                    value={message} 
+                    onChange={(e)=>handleMessageInput(e)} 
+                    className='message-input' 
+                    data-testid='message-input' 
+                    autoFocus
+                    />
+                <Button 
+                    type='submit' 
+                    className='send-button' 
+                    variant="outline-primary"
+                    data-testid='message-button'
+                    >Send</Button>
             </form>
             {username ? null :window.location.href='/'}
         </div>

@@ -45,12 +45,10 @@ export class SocketService {
     }
 
     public onIncomingUsers(): Observable<UserType[]>{
-        console.log('users coming')
         return fromEvent(this.socket, 'userList')
     }
 
     public ping(string:string): void{
-        console.log('ping gets emmited')
         this.socket.emit('ping', string)
     }
 

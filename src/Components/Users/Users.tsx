@@ -22,7 +22,7 @@ const Users = () => {
         <h3>Online</h3>
         {usersList.map((user,index)=>{
             if(user.connected){
-                return(<li className='online-user-li' key={index}>{user.username}</li>)
+                return(<li className='online-user-li' key={index} data-testid={`${index}-user`}>{user.username}</li>)
             }
         })}
     </div>)

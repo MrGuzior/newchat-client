@@ -35,7 +35,6 @@ const Login = () => {
                 dispatch(setErrorMessage('Username taken'))
                 break;
             default:
-                console.log('whwopsi')
                 dispatch(setErrorMessage('Ooops, something went wrong.'))
         }
     }
@@ -62,7 +61,7 @@ const Login = () => {
             }}
             >
             {redirect ? <Redirect to={`/chat`} /> : null}
-            <p>{errorMessage}</p>
+            <p data-testid='error-display'>{errorMessage}</p>
             <form onSubmit={(e)=>handleSubmit(e)}>
                 
 
@@ -71,6 +70,7 @@ const Login = () => {
                     placeholder="Username"
                     aria-label="Username"
                     aria-describedby="basic-addon2"
+                    data-testid='username-input'
                     value={username}
                     onChange={(e)=>handleUsernameInput(e)}
                     autoFocus
@@ -79,6 +79,7 @@ const Login = () => {
                     <Button 
                         variant="outline-secondary"
                         type='submit'
+                        data-testid='login-button'
                     >Button</Button>
                 </InputGroup.Append>
             </InputGroup>

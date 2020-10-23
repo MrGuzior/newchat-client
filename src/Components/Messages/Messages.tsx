@@ -18,10 +18,6 @@ const Messages = () => {
             handleTypingUser(user)
         })
     },[])
-
-    useEffect(()=>{
-        console.log('new users')
-    }, [users])
     
     useEffect(()=>{
         scrollToBottom()
@@ -36,13 +32,13 @@ const Messages = () => {
         <div className='messages' >
         {messages.map((message:MessageType, index:number) => {
             return(
-                <Message key={index} message={message}/>
+                <Message key={index} message={message} id={index}/>
             )
         })}{
             users.map((user:UserType, index:number)=>{
                 if(user.isTyping){
                 return(
-                    <Message key={index} message={{
+                    <Message id={index} key={index} message={{
                         id: index,
                         username: 'typing',
                         message: `${user.username} is typing...`,
