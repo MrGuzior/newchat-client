@@ -40,7 +40,7 @@ const Messages = () => {
                 return(
                     <Message id={index} key={index} message={{
                         id: index,
-                        username: 'typing',
+                        username: `${user.username}-typing`,
                         message: `${user.username} is typing...`,
                         timeStamp: Date.now(),
                     }}/>

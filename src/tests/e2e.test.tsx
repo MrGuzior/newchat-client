@@ -5,12 +5,12 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-  } from "react-router-dom";
+  } from "react-router-dom"
 import { Provider } from 'react-redux'
 import {store} from '../store'
 import { render, fireEvent, waitFor} from '@testing-library/react'
-import MutationObserver from "mutation-observer";
-global.MutationObserver = MutationObserver;
+import MutationObserver from "mutation-observer"
+global.MutationObserver = MutationObserver
 import {ChatContext} from '../context/ChatContext'
 import {SocketService} from '../service/SocketService'
 import Login from '../Components/Landing/Login'
@@ -37,7 +37,7 @@ describe('User steps', () => {
             </Provider>
         )
     it('logs in, sends, recieves message, displays userlist', async () => {
-        const usernameInput: HTMLInputElement = getByTestId('username-input')
+        const usernameInput: any = getByTestId('username-input')
         const submitButton = getByTestId('login-button')
         fireEvent.change(usernameInput, { target: { value: 'SomeUser' } })
         expect(usernameInput.value).toBe('SomeUser')
@@ -46,7 +46,7 @@ describe('User steps', () => {
         
         await waitFor(async ()=>{
             window.HTMLElement.prototype.scrollIntoView = jest.fn()
-            const messageInput: HTMLInputElement = getByTestId('message-input')
+            const messageInput: any = getByTestId('message-input')
             const messageButton = getByTestId('message-button')
             const disconnectButton = getByTestId('disconnect-button')
             fireEvent.change(messageInput, { target: { value: 'Some random message' } })

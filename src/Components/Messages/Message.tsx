@@ -12,23 +12,28 @@ interface MessageProps {
 
 const Message = ({message, id}:MessageProps) => {
     const username = useSelector(selectUsername)
+    const typingUsernameRegex:any = RegExp(`${username}-typing`)
+    const typingRegex:any = RegExp(`typing`)
     return(
-        <div
-            
-            className={
-                `message 
-                ${message.username === username  ? 'sent-message' : 'recieved-message'}
-                ${message.username === 'Server' && 'server-message'}
-                ${message.username === 'typing' && 'typing-message'}
-                `
-        }>
-            {(message.username !== username )  && <p className='message-username'>{message.username}</p>}
-            <p 
-                className='message-message'
-                data-testid={`${id}-message`}
-            >{message.message}</p>
-            {message.username !== 'typing' &&  <p className='message-time'>{moment(message.timeStamp).format('LTS')}</p>}
-        </div>
+        <>
+        {!typingUsernameRegex.test(message.username) &&
+            <div
+                className={
+                    `message 
+                    ${message.username === username  ? 'sent-message' : 'recieved-message'}
+                    ${message.username === 'Server' && 'server-message'}
+                    ${message.username === 'typing' && 'typing-message'}
+                    `
+            }>
+                {(message.username !== username && !typingRegex.test(message.username))  && <p className='message-username'>{message.username}</p>}
+                <p 
+                    className='message-message'
+                    data-testid={`${id}-message`}
+                >{message.message}</p>
+                {message.username !== 'typing' &&  <p className='message-time'>{moment(message.timeStamp).format('LTS')}</p>}
+            </div>
+        }
+        </>
     )
 }
 
