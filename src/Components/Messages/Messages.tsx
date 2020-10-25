@@ -15,7 +15,6 @@ const Messages = () => {
 
     useEffect(()=>{
         chatSocket.onIncomingIsTyping().subscribe((user:UserType)=>{
-            handleTypingUser(user)
         })
     },[])
     
@@ -24,9 +23,6 @@ const Messages = () => {
     },[messages])
     
     const scrollToBottom = () => bottomScrollRef.current && bottomScrollRef.current.scrollIntoView({behavior: 'smooth'})
-    
-    const handleTypingUser = (user: UserType) => {
-    }
 
     return (
         <div className='messages' >
