@@ -16,9 +16,9 @@ function App() {
   chat.init()
 
   useEffect(()=>{
-    fetch('https://new-chat-salt-server.herokuapp.com/')
+    fetch('https://new-chat-salt-server.herokuapp.com/test')
           .then(res => res.json())
-          .then(data => console.log(data))
+          .then(data => console.log(data + ' from the test'))
   },[])
   
   return (
