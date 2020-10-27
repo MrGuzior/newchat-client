@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,6 +14,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   const chat = new SocketService()
   chat.init()
+
+  useEffect(()=>{
+    fetch('https://new-chat-salt-server.herokuapp.com/')
+          .then(res => res.json())
+          .then(data => console.log(data))
+  },[])
   
   return (
     <Router>
