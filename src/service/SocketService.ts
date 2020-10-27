@@ -1,12 +1,14 @@
 import io from 'socket.io-client';
 import {MessageType, UserType} from '../types'
 import { fromEvent, Observable } from 'rxjs';
+import {PORT} from '../config'
 
 export class SocketService {
     private socket: SocketIOClient.Socket = {} as SocketIOClient.Socket
 
     public init(): SocketService {
-        this.socket = io('localhost:8080', { 'forceNew': false })
+        console.log(PORT)
+        this.socket = io(PORT, { 'forceNew': false })
         
         return this
     }
