@@ -10,14 +10,14 @@
 }
 
 .sent-message{
-    border-radius: 3px 20px 20px 20px;
+    border-radius: 20px 3px 20px 20px;
     background-color: #E8E8E8;
+    margin-left: auto;
+    text-align: right;
 }
 
 .recieved-message{
-    text-align: right;
-    margin-left: auto;
-    border-radius: 20px 3px 20px 20px;
+    border-radius: 3px 20px 20px 20px;
     background-color: #3290fc;
     color:white;
 }
