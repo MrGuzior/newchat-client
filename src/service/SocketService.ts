@@ -7,19 +7,15 @@ export class SocketService {
     private socket: SocketIOClient.Socket = {} as SocketIOClient.Socket
 
     public init(): SocketService {
-        
         this.socket = io(SERVER, { 'forceNew': false })
-        
         return this
     }
 
     public sendMessage(message: MessageType): void {
         this.socket.emit('message', message)
-        
     }
 
     public onIncomingMessage(): Observable<MessageType> {
-        
         return fromEvent(this.socket, 'message')
     }
 
@@ -28,17 +24,14 @@ export class SocketService {
     }
 
     public onIncomingSignIn(): Observable<UserType>{
-        
         return fromEvent(this.socket, 'signIn')
     }
 
     public disconnectUser(): void {
-        
         this.socket.disconnect()
     }
 
     public onIncomingDisconnectUser(): Observable<UserType>{
-        
         return fromEvent(this.socket, 'disconnect')
     }
 

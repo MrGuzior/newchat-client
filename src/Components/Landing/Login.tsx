@@ -14,7 +14,7 @@ import {
 } from './landingSlice'
 import {motion} from 'framer-motion'
 import InputGroup from 'react-bootstrap/InputGroup'
-import FormControl, { FormControlProps } from 'react-bootstrap/FormControl'
+import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 import './Login.css'
 

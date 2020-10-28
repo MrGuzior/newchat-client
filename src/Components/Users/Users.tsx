@@ -9,7 +9,7 @@ const Users = () => {
     const dispatch = useDispatch()
     const chatSocket = useContext(ChatContext)
     const usersList = useSelector(selectUsers)
-
+    
     useEffect(()=>{
         chatSocket.onIncomingUsers().subscribe((users:UserType[])=>{handleIncomingUsers(users)}) 
     },[])
@@ -21,9 +21,7 @@ const Users = () => {
     return (<div className='users-list'>
         <h3>Online</h3>
         {usersList.map((user,index)=>{
-            if(user.connected){
-                return(<li className='online-user-li' key={index} data-testid={`${index}-user`}>{user.username}</li>)
-            }
+            return user.connected && (<li className='online-user-li' key={index} data-testid={`${index}-user`}>{user.username}</li>)
         })}
     </div>)
 }

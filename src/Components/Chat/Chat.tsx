@@ -1,5 +1,4 @@
-import React, {useEffect, useContext, useRef} from 'react'
-import { Redirect } from 'react-router-dom';
+import React, {useEffect, useContext} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import Messages from '../Messages/Messages'
 import Users from '../Users/Users'
@@ -10,7 +9,6 @@ import {selectUsername} from '../Landing/landingSlice'
 import {setMessage, clearMessage, selectMessage} from './chatSlice'
 import {idleDisconnectMilliseconds} from '../../config'
 import Button from 'react-bootstrap/Button'
-import FormControl from 'react-bootstrap/FormControl'
 import './Chat.css'
 
 const Chat = () => {

@@ -18,11 +18,13 @@
     text-align: right;
     margin-left: auto;
     border-radius: 20px 3px 20px 20px;
-    background-color: #E9C5EB;
+    background-color: #3290fc;
+    color:white;
 }
 
 .server-message{
-    background-color: #E9C5EB;
+    background-color:#3290fc;
+    color:white;
 }
 
 .message-username{
@@ -31,6 +33,7 @@
 
 .message-time{
     font-size: 0.6em;
+    margin:0;
 }
 
 .message-message{

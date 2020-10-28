@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,8 +15,6 @@ function App() {
   const chat = new SocketService()
   chat.init()
 
-  
-  
   return (
     <Router>
       <ChatContext.Provider value={chat}>
