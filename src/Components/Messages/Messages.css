@@ -8,3 +8,13 @@
 .messages > :first-child { 
     margin-top: auto 
 }
+
+.logo-messages{
+    position: absolute;
+    z-index: -1;
+    top:35%;
+    left: 12%;
+    width: 100%;
+    font-size: 10em;
+    color: #3290fc2c;
+}

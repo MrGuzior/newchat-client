@@ -19,7 +19,7 @@ const Users = () => {
     }
 
     return (<div className='users-list'>
-        <h3>Online</h3>
+        <h3 className='users-header'>Online</h3>
         {usersList.map((user,index)=>{
             return user.connected && (<li className='online-user-li' key={index} data-testid={`${index}-user`}>{user.username}</li>)
         })}

@@ -80,7 +80,7 @@ const Login = () => {
                         variant="outline-secondary"
                         type='submit'
                         data-testid='login-button'
-                    >Button</Button>
+                    >Log in</Button>
                 </InputGroup.Append>
             </InputGroup>
 

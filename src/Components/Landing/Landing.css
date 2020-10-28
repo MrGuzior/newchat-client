@@ -1,3 +1,17 @@
 .landing{
     width:100%;
+    z-index: 99;
+}
+
+.logo{
+    margin-top: 10vh;
+    text-align: center;
+    font-size: 7em;
+    color: #3290fc;
+}
+
+.heading{
+    text-align: center;
+    font-size: 1.8em;
+    color: #3290fc;
 }
