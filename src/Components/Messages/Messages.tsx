@@ -49,8 +49,6 @@ const Messages = () => {
                 
         <div ref={bottomScrollRef}></div>
     </div>
-            
-    
     )
 }
 

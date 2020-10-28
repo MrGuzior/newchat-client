@@ -13,8 +13,7 @@ import './Chat.css'
 
 const Chat = () => {
     const dispatch = useDispatch()
-    const chatSocket = useContext(ChatContext)
-    
+    const chatSocket = useContext(ChatContext) 
     const message = useSelector(selectMessage)
     const username = useSelector(selectUsername)
     let idleTimeout:ReturnType<typeof setTimeout>
@@ -25,7 +24,6 @@ const Chat = () => {
         handleIdleTimeout()
         return ()=>{chatSocket.disconnectUser()}
     },[])
-
 
     const handleIncomingMessage = (message: MessageType) => {        
         dispatch(addMessage(message))
@@ -43,13 +41,15 @@ const Chat = () => {
  
     const handleSubmit = (event:React.FormEvent):void => {
         event.preventDefault()
-        dispatch(clearMessage())
-        chatSocket.sendMessage({
-            id: Date.now(),
-            username: username,
-            message: message,
-            timeStamp: Date.now(),
-        })
+        if(message !== ''){
+            dispatch(clearMessage())
+            chatSocket.sendMessage({
+                id: Date.now(),
+                username: username,
+                message: message,
+                timeStamp: Date.now(),
+            })
+        }
     }
 
     const handleMessageInput = (e:React.ChangeEvent<HTMLInputElement>):void=>{
@@ -70,7 +70,6 @@ const Chat = () => {
                         variant="outline-danger"
                         data-testid='disconnect-button'
                     >Disconnect</Button>
-                    
                     <Users/>
                 </div>
             </div>

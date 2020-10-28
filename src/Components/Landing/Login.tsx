@@ -41,13 +41,17 @@ const Login = () => {
 
     const handleSubmit = (e: React.FormEvent):void => {
         e.preventDefault()
-        chatSocket.signIn({
-            username,
-        }, handleSignIn)
+        if(username === '') {
+            dispatch(setErrorMessage("Username can't be empty"))
+        }else{
+            chatSocket.signIn({
+                username,
+            }, handleSignIn)
+        }
     }
 
     const handleUsernameInput = (e: any): void => {
-        dispatch(setUsername(e.target.value))
+            dispatch(setUsername(e.target.value))
     }
 
     return(
@@ -63,7 +67,6 @@ const Login = () => {
             {redirect ? <Redirect to={`/chat`} /> : null}
             <p data-testid='error-display'>{errorMessage}</p>
             <form onSubmit={(e)=>handleSubmit(e)}>
-                
 
             <InputGroup className="mb-3">
                 <FormControl
@@ -91,22 +94,3 @@ const Login = () => {
 }
 
 export default Login
-
-/*
-<motion.div 
-            className='login'
-            animate={{y:window.innerHeight/2-50}}
-            initial={{y:'110vh'}}
-            transition={{
-                duration:1,
-                type:'spring'
-            }}
-            >
-            {redirect ? <Redirect to={`/chat`} /> : null}
-            <p>{errorMessage}</p>
-            <form onSubmit={(e)=>handleSubmit(e)}>
-                <input type="text" value={username} onChange={(e)=>handleUsernameInput(e)}/>
-                <button type='submit'>Join chat</button>
-            </form>
-        </motion.div>
-*/
