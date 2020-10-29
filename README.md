@@ -47,3 +47,7 @@ All the code is located in the src directory. The folder structure inside src di
 - tests: Contains e2e and unit tests
 - types: contains type interfaces
 
+
+## Screenshots
+
+![SaltChat landing page](https://user-images.githubusercontent.com/36774785/97587376-9d364f80-19fb-11eb-93ed-5f99af47d3c7.png)
