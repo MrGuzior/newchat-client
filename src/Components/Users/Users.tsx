@@ -18,12 +18,22 @@ const Users = () => {
         if(users)dispatch(updateUsersList(users))
     }
 
-    return (<div className='users-list'>
-        <h3 className='users-header'>Online</h3>
-        {usersList.map((user,index)=>{
-            return user.connected && (<li className='online-user-li' key={index} data-testid={`${index}-user`}>{user.username}</li>)
-        })}
-    </div>)
+    return (
+        <div className='users-list'>
+            <h3 className='users-header'>Online</h3>
+            {usersList.map((user,index)=>{
+                return user.connected && 
+                (
+                    <li 
+                        className='online-user-li' 
+                        key={index} 
+                        data-testid={`${index}-user`}
+                        >{user.username}
+                    </li>
+                )
+            })}
+        </div>
+    )
 }
 
 export default Users

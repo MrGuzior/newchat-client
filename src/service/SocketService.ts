@@ -31,20 +31,8 @@ export class SocketService {
         this.socket.disconnect()
     }
 
-    public onIncomingDisconnectUser(): Observable<UserType>{
-        return fromEvent(this.socket, 'disconnect')
-    }
-
-    public onTest(): Observable<string>{
-        return fromEvent(this.socket, 'test')
-    }
-
     public onIncomingUsers(): Observable<UserType[]>{
         return fromEvent(this.socket, 'userList')
-    }
-
-    public ping(string:string): void{
-        this.socket.emit('ping', string)
     }
 
     public idleTimeout(): void{
@@ -53,9 +41,5 @@ export class SocketService {
 
     public userTyping(): void{
         this.socket.emit('typing')
-    }
-
-    public onIncomingIsTyping(): Observable<UserType>{
-        return fromEvent(this.socket, 'isTyping')
     }
 }

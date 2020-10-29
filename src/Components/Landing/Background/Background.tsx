@@ -28,15 +28,14 @@ const Background = () => {
 
     return(
         <>
-        <motion.div
-        animate={messageAnimate} 
-        initial={messageInitial} 
-        transition={messageTransition}
-        className='background'
-        >
-            <Messages/>
-            
-        </motion.div>
+            <motion.div
+                animate={messageAnimate} 
+                initial={messageInitial} 
+                transition={messageTransition}
+                className='background'
+            >
+                <Messages/>
+            </motion.div>
         </>
     )
 }

@@ -1,22 +1,15 @@
-import React, {useEffect, useContext, useRef} from 'react'
+import React, {useEffect, useRef} from 'react'
 import {MessageType, UserType} from '../../types'
 import Message from './Message'
 import {useSelector} from 'react-redux'
 import {selectMessages} from './messagesSlice'
-import {ChatContext} from '../../context/ChatContext'
 import {selectUsers} from '../Users/usersSlice'
 import './Messages.css'
 
 const Messages = () => {
     const messages = useSelector(selectMessages)
-    const chatSocket = useContext(ChatContext)
     const users = useSelector(selectUsers)
     const bottomScrollRef = useRef<HTMLDivElement>(null)
-
-    useEffect(()=>{
-        chatSocket.onIncomingIsTyping().subscribe((user:UserType)=>{
-        })
-    },[])
     
     useEffect(()=>{
         scrollToBottom()
@@ -27,26 +20,28 @@ const Messages = () => {
     return (
         <div className='messages' >
             <h1 className='logo-messages'>{`<SaltChat/>`}</h1>
-        {messages.map((message:MessageType, index:number) => {
-            return(
-                <Message key={index} message={message} id={index}/>
+            {messages.map((message:MessageType, index:number) => {
+                return(
+                <   Message key={index} message={message} id={index}/>
                 )
-            })}{
-                users.map((user:UserType, index:number)=>{
-                    if(user.isTyping){
-                        return(
-                            <Message id={index} key={index} message={{
-                                id: index,
-                                username: `${user.username}-typing`,
-                                message: `${user.username} is typing...`,
-                                timeStamp: Date.now(),
-                            }}/>
+            })}
+                {
+                    users.map((user:UserType, index:number)=>{
+                        if(user.isTyping){
+                            return(
+                                <Message 
+                                    id={index} 
+                                    key={index} 
+                                    message={{
+                                        id: index,
+                                        username: `${user.username}-typing`,
+                                        message: `${user.username} is typing...`,
+                                        timeStamp: Date.now(),
+                                }}/>
                             )
-                        }
+                            }
                     })
                 }
-
-                
         <div ref={bottomScrollRef}></div>
     </div>
     )

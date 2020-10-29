@@ -58,9 +58,14 @@ const Chat = () => {
     }
 
     return(
-        <div className='Chat' data-testid='chat'>
+        <div 
+            className='Chat' 
+            data-testid='chat'>
             <div className='content-container'>
-                <div className='messages' id='messages' data-testid='messages'>
+                <div 
+                    className='messages' 
+                    id='messages' 
+                    data-testid='messages'>
                         <Messages />
                 </div>
                 <div className='online-list'>
@@ -73,7 +78,10 @@ const Chat = () => {
                     <Users/>
                 </div>
             </div>
-            <form onSubmit={(e)=>handleSubmit(e)} autoComplete='off' className='message-form'>
+            <form 
+                onSubmit={(e)=>handleSubmit(e)} 
+                autoComplete='off' 
+                className='message-form'>
                 <input 
                     placeholder='Write your message...' 
                     type="text" 
@@ -92,7 +100,7 @@ const Chat = () => {
                     data-testid='message-button'
                     >Send</Button>
             </form>
-            {username ? null :window.location.href='/'}
+            {username ? null : window.location.href='/'}
         </div>
     )
 }

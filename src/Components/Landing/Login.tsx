@@ -4,8 +4,7 @@ import { Redirect } from 'react-router-dom';
 import {updateUsersList} from '../Users/usersSlice'
 import {ChatContext} from '../../context/ChatContext'
 import {UserType} from '../../types'
-import {
-    setUsername,
+import {setUsername,
     setErrorMessage,
     setRedirect, 
     selectUsername,
@@ -62,32 +61,28 @@ const Login = () => {
             transition={{
                 duration:1,
                 type:'spring'
-            }}
-            >
+        }}>
             {redirect ? <Redirect to={`/chat`} /> : null}
             <p data-testid='error-display'>{errorMessage}</p>
             <form onSubmit={(e)=>handleSubmit(e)}>
-
-            <InputGroup className="mb-3">
-                <FormControl
-                    placeholder="Username"
-                    aria-label="Username"
-                    aria-describedby="basic-addon2"
-                    data-testid='username-input'
-                    value={username}
-                    onChange={(e)=>handleUsernameInput(e)}
-                    autoFocus
+                <InputGroup className="mb-3">
+                    <FormControl
+                        placeholder="Username"
+                        aria-label="Username"
+                        aria-describedby="basic-addon2"
+                        data-testid='username-input'
+                        value={username}
+                        onChange={(e)=>handleUsernameInput(e)}
+                        autoFocus
                 />
-                <InputGroup.Append>
-                    <Button 
-                        variant="outline-secondary"
-                        type='submit'
-                        data-testid='login-button'
-                    >Log in</Button>
-                </InputGroup.Append>
-            </InputGroup>
-
-
+                    <InputGroup.Append>
+                        <Button 
+                            variant="outline-secondary"
+                            type='submit'
+                            data-testid='login-button'
+                        >Log in</Button>
+                    </InputGroup.Append>
+                </InputGroup>
             </form>
         </motion.div>
     )
