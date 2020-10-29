@@ -51,3 +51,4 @@ All the code is located in the src directory. The folder structure inside src di
 ## Screenshots
 
 ![SaltChat landing page](https://user-images.githubusercontent.com/36774785/97587376-9d364f80-19fb-11eb-93ed-5f99af47d3c7.png)
+![SaltChat chat page](https://user-images.githubusercontent.com/36774785/97587607-dbcc0a00-19fb-11eb-85b4-7c551c59e195.png)
